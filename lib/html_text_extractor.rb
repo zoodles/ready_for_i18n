@@ -25,7 +25,7 @@ module ReadyForI18N
       return !@stack.empty?
     end
     def to_value(s)
-      s.strip
+      s
     end
     def replace_line(line,e)
       repeat = line.scan(e).size
