@@ -12,7 +12,7 @@ module ReadyForI18N
       false
     end
     def to_value(s)
-      s[1..-2]
+       s[1..-2]
     end
     def replace_line(line,e)
        line.gsub!(e,t_method(e[1..-2]))

@@ -1,6 +1,6 @@
 module ReadyForI18N
   class HtmlTextExtractor
-    SKIP_TAGS = [[/<script/i,/<\/script>/i],[/<%/,/%>/],[/<style/i,/\/style>/i]]
+    SKIP_TAGS = [[/<script/i,/<\/script>/i],[/javascript_tag/i,/end/i],[/<%/,/%>/],[/<style/i,/\/style>/i]]
     SKIP_INLINE_TAG = [/<script>(.*?)<\/script>/i,/<%(.*?)%>/,/<(.*?)>/,/<(.*)$/,/^(.*)>/,/&nbsp;/]
     SEPERATOR = '_@@@_'
 
@@ -8,6 +8,7 @@ module ReadyForI18N
     
     protected 
     def values_in_line(line)
+
       SKIP_INLINE_TAG.inject(line.clone){|memo,tag| memo.gsub(tag,SEPERATOR)}.strip.split SEPERATOR
     end
     def skip_line?(s)
