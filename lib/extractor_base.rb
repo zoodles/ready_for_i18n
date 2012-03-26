@@ -42,7 +42,7 @@ module ReadyForI18N
     def to_key(s)
       val = to_value(s)
       result = (ExtractorBase.key_mapper) ? ExtractorBase.key_mapper.key_for(val) : val.scan(/\w+/).join('_').downcase
-
+      result << "_html" if val.include?("&")
       key_prefix ? "#{key_prefix}_#{result}" : result
     end
     def can_replace?(e)

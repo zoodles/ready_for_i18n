@@ -9,6 +9,7 @@ module ReadyForI18N
       path.each{|p| h[p] ||= {}; h = h[p] } if path
       if h[key] and h[key] != value
         key = "#{key}_#{value.size}"
+        key << "_html"  if (value.include?("&"))
         h[key] = value
       else
         h[key] = value
