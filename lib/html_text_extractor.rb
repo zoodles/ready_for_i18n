@@ -13,7 +13,8 @@ module ReadyForI18N
     end
     def skip_line?(s)
       @stack ||= []
-      return false if s.nil? || s.strip.size == 0 
+      return false if s.nil? || s.strip.size == 0
+      return true if s.include?("=\"") or s.include?("='")
       jump_in_tag = SKIP_TAGS.find{ |start_tag,end_tag| s =~ start_tag}
       @stack.push jump_in_tag[1] if jump_in_tag
       unless @stack.empty?
