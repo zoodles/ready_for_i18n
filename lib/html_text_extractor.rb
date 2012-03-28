@@ -18,7 +18,7 @@ module ReadyForI18N
       return true if s.nil? || s.strip.size == 0
       jump_in_tag = SKIP_TAGS.find{ |start_tag,end_tag| s =~ start_tag}
 
-      if ((s.include?("=\"") or s.include?("='")) and (s.include?("src") or s.include?("style") or s.include?("-") or s.include?("_")))
+      if s.include?("=\"<%") or s.include?("='<%")
         return true
       end
 
